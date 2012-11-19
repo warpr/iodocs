@@ -267,6 +267,17 @@ function oauthSuccess(req, res, next) {
     });
 }
 
+function processMultiselect (req, paramName, param) {
+
+    if (! Array.isArray (param))
+        return param;
+
+    if (! req.hasOwnProperty (paramName + '-separator'))
+        return param;
+
+    return param.join (req[paramName + '-separator']);
+};
+
 //
 // processRequest - handles API call
 //
@@ -288,6 +299,8 @@ function processRequest(req, res, next) {
     // Replace placeholders in the methodURL with matching params
     for (var param in params) {
         if (params.hasOwnProperty(param)) {
+            params[param] = processMultiselect(reqQuery, param, params[param])
+
             if (params[param] !== '') {
                 // URL params are prepended with ":"
                 var regx = new RegExp(':' + param);
