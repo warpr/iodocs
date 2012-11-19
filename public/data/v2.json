@@ -54,6 +54,74 @@
                     ]
                 }
             ]
+        },
+        {
+            "name":"Browse Requests",
+            "methods":[
+                {
+                    "MethodName":"Artist",
+                    "Synopsis":"This method allows you to browse artists",
+                    "HTTPMethod":"GET",
+                    "URI":"/artist/",
+                    "RequiresOAuth":"N",
+                    "parameters":[
+                        {
+                            "Name":"recording",
+                            "Required":"N",
+                            "Default": "",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a recording"
+                        },
+                        {
+                            "Name":"release",
+                            "Required":"N",
+                            "Default": "0055dbfb-9bf5-45d3-9c11-069128ee9212",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a release"
+                        },
+                        {
+                            "Name":"release-group",
+                            "Required":"N",
+                            "Default": "",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a release-group"
+                        },
+                        {
+                            "Name":"work",
+                            "Required":"N",
+                            "Default": "",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a work"
+                        },
+                        {
+                            "Name":"inc",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"multiselect",
+                            "Separator": " ",
+                            "Description":"This parameter allows you to request more information to be included.",
+                            "EnumeratedList": [
+                                "aliases",
+                                "ratings",
+                                "tags"
+                            ],
+                            "EnumeratedDescription": {
+                                "aliases": "include artist aliases",
+                                "ratings": "include ratings for the artist",
+                                "tags": "include tags for the artist"
+                            }
+                        },
+                        {
+                            "Name":"fmt",
+                            "Required":"N",
+                            "Default":"xml",
+                            "Type":"enumerated",
+                            "Description":"Output format as JSON or XML",
+                            "EnumeratedList":[ "json", "xml" ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
