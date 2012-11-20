@@ -5,5 +5,12 @@
         "baseURL": "musicbrainz.org",
         "publicPath": "/ws/2",
         "headers" : { }
+    },
+    "coverartarchive": {
+        "name": "Cover Art Archive",
+        "protocol": "http",
+        "baseURL": "coverartarchive.org",
+        "publicPath": "",
+        "headers" : { }
     }
 }

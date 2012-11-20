@@ -1,0 +1,26 @@
+{
+    "endpoints":[
+        {
+            "name":"Release artwork index",
+            "methods":[
+                {
+                    "MethodName":"Release",
+                    "Synopsis":"This method allows you to retrieve the index of available artwork for a release",
+                    "HTTPMethod":"GET",
+                    "URI":"/release/:mbid/",
+                    "RequiresOAuth":"N",
+                    "parameters":[
+                        {
+                            "Name":"mbid",
+                            "Required":"Y",
+                            "Default":"cbd78c74-4281-4913-9c05-dfc48706df4e",
+                            "Type":"string",
+                            "Description":"The musicbrainz identifier for the release"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
