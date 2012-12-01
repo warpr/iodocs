@@ -242,12 +242,23 @@
             } else {
                 var response,
                     responseContentType = result.headers['content-type'];
-                // Format output according to content-type
-                response = livedocs.formatData(result.response, result.headers['content-type'])
 
-                $('pre.response', resultContainer)
-                    .toggleClass('error', false)
-                    .text(response);
+                if (/^image/.test (responseContentType))
+                {
+                    response = '<img src="http://' + result.call + '" />';
+                    $('pre.response', resultContainer)
+                        .toggleClass('error', false)
+                        .html(response);
+                }
+                else
+                {
+                    // Format output according to content-type
+                    response = livedocs.formatData(result.response, responseContentType)
+                    $('pre.response', resultContainer)
+                        .toggleClass('error', false)
+                        .text(response);
+                }
+
             }
 
         })

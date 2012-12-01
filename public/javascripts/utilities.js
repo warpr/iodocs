@@ -53,6 +53,7 @@ function formatJSON(jsonString) {
     return JSON.stringify(jsonString, null, '    ');
 }
 
+
 // Cause the browser to "select" all the text in an element
 function selectElementText(el, win) {
     el.focus();

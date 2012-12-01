@@ -30,8 +30,8 @@ var express     = require('express'),
     OAuth       = require('oauth').OAuth,
     query       = require('querystring'),
     url         = require('url'),
-    http        = require('http'),
-    https       = require('https'),
+    http        = require('follow-redirects').http,
+    https       = require('follow-redirects').https,
     crypto      = require('crypto'),
     redis       = require('redis'),
     RedisStore  = require('connect-redis')(express);
@@ -267,6 +267,17 @@ function oauthSuccess(req, res, next) {
     });
 }
 
+function processMultiselect (req, paramName, param) {
+
+    if (! Array.isArray (param))
+        return param;
+
+    if (! req.hasOwnProperty (paramName + '-separator'))
+        return param;
+
+    return param.join (req[paramName + '-separator']);
+};
+
 //
 // processRequest - handles API call
 //
@@ -288,6 +299,8 @@ function processRequest(req, res, next) {
     // Replace placeholders in the methodURL with matching params
     for (var param in params) {
         if (params.hasOwnProperty(param)) {
+            params[param] = processMultiselect(reqQuery, param, params[param])
+
             if (params[param] !== '') {
                 // URL params are prepended with ":"
                 var regx = new RegExp(':' + param);

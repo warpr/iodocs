@@ -1,0 +1,55 @@
+{
+    "endpoints":[
+        {
+            "name":"Release artwork",
+            "methods":[
+                {
+                    "MethodName":"index",
+                    "Synopsis":"retrieve the index of available artwork for a release",
+                    "HTTPMethod":"GET",
+                    "URI":"/release/:mbid/",
+                    "RequiresOAuth":"N",
+                    "parameters":[
+                        {
+                            "Name":"mbid",
+                            "Required":"Y",
+                            "Default":"cbd78c74-4281-4913-9c05-dfc48706df4e",
+                            "Type":"string",
+                            "Description":"The musicbrainz identifier for the release"
+                        }
+                    ]
+                },
+                {
+                    "MethodName":"front",
+                    "Synopsis":"retrieve front cover art for a release",
+                    "HTTPMethod":"GET",
+                    "URI":"/release/:mbid/front:size",
+                    "RequiresOAuth":"N",
+                    "parameters":[
+                        {
+                            "Name":"mbid",
+                            "Required":"Y",
+                            "Default":"28ea4110-8c94-49b6-a9fa-8f401b11df80",
+                            "Type":"string",
+                            "Description":"The musicbrainz identifier for the release"
+                        },
+                        {
+                            "Name":"size",
+                            "Required":"Y",
+                            "Default": "",
+                            "Description": "Image size",
+                            "Type": "enumerated",
+                            "EnumeratedList": [ "", "-250", "-500" ],
+                            "EnumeratedDescription": {
+                                "": "Original size",
+                                "-250": "Thumbnail (max 250x250)",
+                                "-500": "Thumbnail (max 500x500)"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

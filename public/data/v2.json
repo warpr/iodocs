@@ -1,0 +1,154 @@
+{
+    "endpoints":[
+        {
+            "name":"Lookup Requests",
+            "methods":[
+                {
+                    "MethodName":"Artist",
+                    "Synopsis":"This method allows you to retrieve an artist",
+                    "HTTPMethod":"GET",
+                    "URI":"/artist/:mbid",
+                    "RequiresOAuth":"N",
+                    "parameters":[
+                        {
+                            "Name":"mbid",
+                            "Required":"Y",
+                            "Default":"45a663b5-b1cb-4a91-bff6-2bef7bbfdd76",
+                            "Type":"string",
+                            "Description":"The musicbrainz identifier for the artist"
+                        },
+                        {
+                            "Name":"inc",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"multiselect",
+                            "Separator": " ",
+                            "Description":"This parameter allows you to request more information to be included.",
+                            "EnumeratedList": [
+                                "aliases",
+                                "artist-credits",
+                                "discids",
+                                "isrcs",
+                                "media",
+                                "puids",
+                                "ratings",
+                                "recordings",
+                                "releases",
+                                "release-groups",
+                                "tags",
+                                "various-artists",
+                                "works",
+                                "artist-rels",
+                                "label-rels",
+                                "recording-rels",
+                                "release-rels",
+                                "release-group-rels",
+                                "url-rels",
+                                "work-rels"
+                            ],
+                            "EnumeratedDescription": {
+                                "aliases": "include artist aliases",
+                                "artist-credits": "include artists credits for releases and recordings",
+                                "discids": "include discids for all media in the releases",
+                                "isrcs": "include isrcs for all recordings",
+                                "media": "include media for all releases, this includes the # of tracks on each medium and its format",
+                                "puids": "include puids for all recordings",
+                                "ratings": "include ratings for the artist",
+                                "recordings": "include recordings credited to this artist",
+                                "releases": "include releases credited to this artist",
+                                "release-groups": "include release groups credited to this artist",
+                                "tags": "include tags for the artist",
+                                "various-artists": "include only those releases where the artist appears on one of the tracks, but not in the artist credit for the release itself (this is only valid on a /ws/2/artist?inc=releases request)",
+                                "works": "include works related to this artist",
+                                "artist-rels": "include artist relationships",
+                                "label-rels": "include artist relationships",
+                                "recording-rels": "include recording relationships",
+                                "release-rels": "include release relationships",
+                                "release-group-rels": "include release group relationships",
+                                "url-rels": "include url relationships",
+                                "work-rels": "include work relationships"
+                            }
+                        },
+                        {
+                            "Name":"fmt",
+                            "Required":"N",
+                            "Default":"xml",
+                            "Type":"enumerated",
+                            "Description":"Output format as JSON or XML",
+                            "EnumeratedList":[ "json", "xml" ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"Browse Requests",
+            "methods":[
+                {
+                    "MethodName":"Artist",
+                    "Synopsis":"This method allows you to browse artists",
+                    "HTTPMethod":"GET",
+                    "URI":"/artist/",
+                    "RequiresOAuth":"N",
+                    "parameters":[
+                        {
+                            "Name":"recording",
+                            "Required":"N",
+                            "Default": "",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a recording"
+                        },
+                        {
+                            "Name":"release",
+                            "Required":"N",
+                            "Default": "0055dbfb-9bf5-45d3-9c11-069128ee9212",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a release"
+                        },
+                        {
+                            "Name":"release-group",
+                            "Required":"N",
+                            "Default": "",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a release-group"
+                        },
+                        {
+                            "Name":"work",
+                            "Required":"N",
+                            "Default": "",
+                            "Type":"string",
+                            "Description":"A musicbrainz identifier for a work"
+                        },
+                        {
+                            "Name":"inc",
+                            "Required":"N",
+                            "Default":"",
+                            "Type":"multiselect",
+                            "Separator": " ",
+                            "Description":"This parameter allows you to request more information to be included.",
+                            "EnumeratedList": [
+                                "aliases",
+                                "ratings",
+                                "tags"
+                            ],
+                            "EnumeratedDescription": {
+                                "aliases": "include artist aliases",
+                                "ratings": "include ratings for the artist",
+                                "tags": "include tags for the artist"
+                            }
+                        },
+                        {
+                            "Name":"fmt",
+                            "Required":"N",
+                            "Default":"xml",
+                            "Type":"enumerated",
+                            "Description":"Output format as JSON or XML",
+                            "EnumeratedList":[ "json", "xml" ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

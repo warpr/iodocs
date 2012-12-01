@@ -33,6 +33,9 @@ var livedocs = (function() {
                 data = formatXML(data);
 
                 break;
+            case /image/.test(contentType):
+                data = formatImage(data);
+                break;
         }
 
         return data;
